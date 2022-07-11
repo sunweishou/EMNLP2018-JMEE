@@ -196,7 +196,7 @@ class EERunner(object):
         log('optimizer in use: %s' % str(self.a.optimizer))
 
         if not os.path.exists(self.a.out):
-            os.mkdir(self.a.out)
+            os.makedirs(self.a.out)
         with open(os.path.join(self.a.out, "word.vec"), "wb") as f:
             pickle.dump(WordsField.vocab, f)
         with open(os.path.join(self.a.out, "pos.vec"), "wb") as f:
