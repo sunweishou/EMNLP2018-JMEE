@@ -10,7 +10,7 @@ from enet.corpus.Sentence import Sentence
 
 
 class SparseField(Field):
-    def process(self, batch, device, train):
+    def process(self, batch, **kwarg):
         return batch
 
 
