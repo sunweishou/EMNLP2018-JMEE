@@ -6,3 +6,4 @@ torch
 numpy
 tensorboardX
 seqeval
+six
