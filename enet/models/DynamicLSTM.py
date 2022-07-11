@@ -54,14 +54,26 @@ class DynamicLSTM(nn.Module):
             containing the cell state for `t = seq_len`
         """
         # 1. sort
-        x_sort_idx = np.argsort(-x_len)
-        x_unsort_idx = torch.LongTensor(np.argsort(x_sort_idx)).to(self.device)
+        # x_sort_idx = np.argsort(-x_len)
+        x_sort_idx = torch.LongTensor.argsort(-x_len).to(self.device)   # 修改为torch张量运算
+
+        # x_unsort_idx = torch.LongTensor(np.argsort(x_sort_idx)).to(self.device)
+        x_unsort_idx = torch.LongTensor.argsort(x_sort_idx).to(self.device)   # 修改为torch张量运算
+        
         x_len = x_len[x_sort_idx]
-        x = x[torch.LongTensor(x_sort_idx).to(self.device)]
+
+        # x = x[torch.LongTensor(x_sort_idx).to(self.device)]
+        x = x[x_sort_idx]
         # 2. pack
-        x_p = torch.nn.utils.rnn.pack_padded_sequence(x, x_len, batch_first=self.batch_first)
+        # x_p = torch.nn.utils.rnn.pack_padded_sequence(x, x_len, batch_first=self.batch_first)
+        x_p = torch.nn.utils.rnn.pack_padded_sequence(x.cpu(), x_len.cpu(), batch_first=self.batch_first)   # 只能cpu运算
+
         # 3. process using RNN
-        out_pack, (ht, ct) = self.LSTM(x_p, None)
+        if self.device.type == 'cuda':
+            out_pack, (ht, ct) = self.LSTM(x_p.cuda(), None)    # 恢复cuda
+        else:
+            out_pack, (ht, ct) = self.LSTM(x_p, None)
+
         # 4. unsort h
         ht = torch.transpose(ht, 0, 1)[x_unsort_idx]
         ht = torch.transpose(ht, 0, 1)
