@@ -31,14 +31,14 @@ class EERunner(object):
 
         parser.add_argument("--seed", help="RNG seed", default=42, type=int)
         parser.add_argument("--optimizer", default="adam")
-        parser.add_argument("--lr", default=1e-3, type=float)
+        parser.add_argument("--lr", default=1e-3, type=float)               # unused
         parser.add_argument("--l2decay", default=0, type=float)
-        parser.add_argument("--maxnorm", default=3, type=float)
+        parser.add_argument("--maxnorm", default=3, type=float)             # unused
 
         parser.add_argument("--out", help="output model path", default="out")
         parser.add_argument("--finetune", help="pretrained model path")
-        parser.add_argument("--earlystop", default=999999, type=int)
-        parser.add_argument("--restart", default=999999, type=int)
+        parser.add_argument("--earlystop", default=999999, type=int)        # unused
+        parser.add_argument("--restart", default=999999, type=int)          # unused
 
         parser.add_argument("--device", default="cpu")
         parser.add_argument("--hps", help="model hyperparams", required=False)
