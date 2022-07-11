@@ -1,3 +1,6 @@
+# 这是从EMNLP2018-JMEE拉取的一个分支，目的是处理一些对新版本依赖的兼容问题
+### 下面是原本的README.md
+
 # Jointly Multiple Events Extraction (JMEE)
 This is the code of the Jointly Multiple Events Extraction (JMEE) in [our EMNLP 2018 paper](https://arxiv.org/abs/1809.09078).
 
