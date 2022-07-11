@@ -1,7 +1,7 @@
 # 这是从EMNLP2018-JMEE拉取的一个分支，目的是处理一些对新版本依赖的兼容问题
 ## 测试使用了ace2005-preprocessing-master工具对ACE2005数据集进行了预处理
-## 其实还有另一个预处理程序ace-data-prep-master，应该是JMEE原始代码所使用的那个，虽几番修改成功输出了待测数据，但因问题较多，未继续测试
-### 下面是原本的README.md
+### 其实还有另一个预处理程序ace-data-prep-master，应该是JMEE原始代码所使用的那个，虽几番修改成功输出了待测数据，但因问题较多，未继续测试
+## 下面是原本的README.md
 
 # Jointly Multiple Events Extraction (JMEE)
 This is the code of the Jointly Multiple Events Extraction (JMEE) in [our EMNLP 2018 paper](https://arxiv.org/abs/1809.09078).
