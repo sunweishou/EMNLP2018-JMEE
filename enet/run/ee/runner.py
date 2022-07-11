@@ -80,7 +80,8 @@ class EERunner(object):
         PosTagsField = Field(lower=True, batch_first=True)
         EntityLabelsField = MultiTokenField(lower=False, batch_first=True)
         AdjMatrixField = SparseField(sequential=False, use_vocab=False, batch_first=True)
-        LabelField = Field(lower=False, batch_first=True, pad_token=None, unk_token=None)
+        # LabelField = Field(lower=False, batch_first=True, pad_token=None, unk_token=None)
+        LabelField = Field(lower=False, batch_first=True)
         EventsField = EventField(lower=False, batch_first=True)
         EntitiesField = EntityField(lower=False, batch_first=True, use_vocab=False)
 
