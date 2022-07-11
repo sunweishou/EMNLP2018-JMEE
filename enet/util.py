@@ -1,5 +1,6 @@
 import json
 import math
+import os
 import sys
 
 import torch
@@ -222,6 +223,11 @@ def run_over_data(model, optimizer, data_iter, MAX_STEP, need_backward, tester, 
         running_loss += loss.item()
 
     if save_output:
+        try:
+            os.makedirs(os.path.dirname(save_output))
+        except FileExistsError:
+            pass
+        
         with open(save_output, "w", encoding="utf-8") as f:
             for tokens in all_tokens:
                 for token in tokens:
